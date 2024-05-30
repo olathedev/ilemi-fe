@@ -11,7 +11,7 @@ const Properties = () => {
 
 
                 {properties?.map((property, id) => (
-                    <div className='bg-white h-[400px] max-h-[380px] rounded-xl px-2.5 pt-2'>
+                    <div className='bg-white h-[400px] max-h-[380px] rounded-xl px-2.5 pt-2' key={id}>
                     <div className="h-[200px] max-h-[200px]">
                         {/* <Image
                             src="/images/house2.jpg"
