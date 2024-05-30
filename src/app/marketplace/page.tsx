@@ -11,11 +11,11 @@ const page = (props: Props) => {
         <Default>
 
 
-            <header className='bg-black px-20 py-16'>
+            <header className='bg-black px-20 py-14'>
 
 
                 <div className='flex flex-col gap-3'>
-                    <h3 className='text-[#07A560] font-semibold'>EXPOLORE AUCTION</h3>
+                    <h3 className='text-[#07A560] text-sm'>EXPOLORE AUCTION</h3>
                     <h1 className='text-white text-3xl font-semibold'>Available Properties</h1>
 
                     <div className="filters grid grid-cols-4 items-center gap-6 mt-6">

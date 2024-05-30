@@ -1,0 +1,42 @@
+import { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+
+type Props = {}
+
+export const metadata: Metadata = {
+    title: {
+        default: "Auction | Buy, Sell landed properties",
+        template: "%s | Auction"
+    }
+}
+
+function AuthLayout({children}: {
+    children: React.ReactNode
+}) {
+  return (
+    <div className='container mx-auto px-10'>
+        <nav className="py-8">
+                <Link href="/">
+                    <div className='w-1/2 flex items-center gap-2'>
+
+                        <Image
+                            src="/images/logo.svg"
+                            width={30}
+                            height={30}
+                            alt="Picture of the author"
+                        />
+
+                        <h3 className='text-xl text-primary-100'>Auction.<span className='text-lg'>ng</span></h3>
+                    </div>
+                </Link>
+
+            </nav>
+
+        {children}
+    </div>
+  )
+}
+
+export default AuthLayout

@@ -1,3 +1,4 @@
+import Footer from '@/components/common/Footer'
 import Navbar from '@/components/common/navbar'
 import React from 'react'
 
@@ -13,6 +14,8 @@ function Default({children}: Props) {
         <main className={`relative`}>
             {children}
         </main>
+
+        <Footer />
     </>
   )
 }
