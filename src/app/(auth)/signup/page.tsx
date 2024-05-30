@@ -60,7 +60,7 @@ function page({ }: Props) {
                     </div>
                 </div>
 
-                <p className='text-sm'>Have an account? <Link href="/signin" className='text-primary-100'>Sign In</Link></p>
+                <p className='text-sm'>Have an account? <Link href="/login" className='text-primary-100'>Sign In</Link></p>
             </div>
         </div>
     )
