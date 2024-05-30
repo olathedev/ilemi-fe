@@ -1,3 +1,4 @@
+import RoundedButton from '@/components/reusables/RoundedButton';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react'
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
 const page = (props: Props) => {
     return (
         <div className='container mx-auto'>
-            <div className="-mt-14 h-screen max-h-screen w-full flex flex-col items-center justify-center">
-                <div className='md:border border-[#B1B7D6] md:px-10 py-6 md:w-[30rem] w-full my-4 rounded-xl'>
+            <div className="lg:-mt-14 mt-20 h-screen max-h-screen w-full md:flex flex-col items-center justify-center">
+                <div className='md:border border-[#B1B7D6] md:px-10 py-6 md:w-[30rem] w-full mt-4 rounded-xl'>
                     <h2 className='text-xl font-semibold text-center'>Welcome Back</h2>
                     <p className='my-2 text-center text-[15px] text-slate-700'>Sign into your Account account to continue</p>
                     <div className="border-t my-6"></div>
@@ -50,13 +51,19 @@ const page = (props: Props) => {
                                 <input type="text" className="py-3.5 px-14 w-full border border-primary-200 rounded-full text-sm bg-[#FAFAFE] focus:outline-none focus:border-primary-100 focus:border-2 focus:bg-[#F1F3FF]" placeholder='Enter your email' />
 
                             </div>
+
+                            <div className="text-right text-sm font-semibold text-gray-600">Forgoten Password?</div>
+
+                            <div className="w-full my-3">
+                                <RoundedButton variant='primary'>Sign in</RoundedButton>
+                            </div>
                         </div>
 
                     </form>
 
                 </div>
 
-                <p className='text-sm'>Dont have an account? <Link href="/signup" className='text-primary-100'>Create Account</Link></p>
+                <p className='text-sm text-center'>Dont have an account? <Link href="/signup" className='text-primary-100'>Create Account</Link></p>
 
 
             </div>

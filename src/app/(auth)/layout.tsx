@@ -16,8 +16,8 @@ function AuthLayout({children}: {
     children: React.ReactNode
 }) {
   return (
-    <div className='container mx-auto px-10'>
-        <nav className="py-8">
+    <div className='container mx-auto md:px-10 px-6'>
+        <nav className="md:py-8 py-6">
                 <Link href="/">
                     <div className='w-1/2 flex items-center gap-2'>
 

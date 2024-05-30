@@ -15,9 +15,9 @@ function page({ }: Props) {
         <div className=''>
           
 
-            <div className="lg:-mt-14 h-screen max-h-screen w-full flex flex-col items-center justify-center">
-                <h2 className='text-xl font-semibold text-slate-800'>How would you like to Join Auction?</h2>
-                <div className='md:border border-[#B1B7D6] px-10 py-6 w-[30rem] my-4 rounded-xl'>
+            <div className="lg:-mt-14 mt-12 px-3 md:h-screen md:max-h-screen w-full md:flex flex-col items-center justify-center">
+                <h2 className='text-2xl font-bold text-slate-800'>How would you like to Join Auction?</h2>
+                <div className='md:border border-[#B1B7D6] md:px-10 py-6 w-full md:w-[30rem] my-4 rounded-xl'>
                     <div className="w-full flex flex-col gap-5">
 
                         <div>
