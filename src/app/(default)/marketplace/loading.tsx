@@ -4,7 +4,7 @@ type Props = {}
 
 const loading = (props: Props) => {
   return (
-    <div>loading</div>
+    <div>loading...</div>
   )
 }
 

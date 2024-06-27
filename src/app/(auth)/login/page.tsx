@@ -1,15 +1,26 @@
+'use client'
+import { loginSchema } from '@/app/lib/validators/zodValidations';
 import RoundedButton from '@/components/reusables/RoundedButton';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react'
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 type Props = {}
+type FormData = z.infer<typeof loginSchema>;
 
-export const metadata: Metadata = {
-    title: "Sign in to your account",
-};
+const Page = (props: Props) => {
 
-const page = (props: Props) => {
+    const {register, handleSubmit, formState: { errors } } = useForm<FormData>({
+        resolver: zodResolver(loginSchema),
+    })
+
+    console.log(errors)
+    const onSubmit = (data: any) => {
+        console.log(data)
+    }
     return (
         <div className='container mx-auto'>
             <div className="lg:-mt-14 mt-20 h-screen max-h-screen w-full md:flex flex-col items-center justify-center">
@@ -18,7 +29,7 @@ const page = (props: Props) => {
                     <p className='my-2 text-center text-[15px] text-slate-700'>Sign into your Account account to continue</p>
                     <div className="border-t my-6"></div>
 
-                    <form className='py-4'>
+                    <form className='py-4' onSubmit={handleSubmit(onSubmit)}>
 
                         <div className='flex flex-col gap-1.5 mb-6'>
                             <label className="text-xs pl-4 font-semibold">EMAIL ADRESS</label>
@@ -31,8 +42,9 @@ const page = (props: Props) => {
                                     </svg>
 
                                 </span>
-                                <input type="text" className="py-3.5 px-14 w-full border border-primary-200 rounded-full text-sm bg-[#FAFAFE] focus:outline-none focus:border-primary-100 focus:border-2 focus:bg-[#F1F3FF]" placeholder='Enter your email' />
+                                <input type="text" className="py-3.5 px-14 w-full border border-primary-200 rounded-full text-sm bg-[#FAFAFE] focus:outline-none focus:border-primary-100 focus:border-2 focus:bg-[#F1F3FF]" placeholder='Enter your email' {...register('email')} />
 
+                                {errors.email && <p className='text-red-500 text-xs pl-4 pt-1.5'>{errors.email.message}</p>}
                             </div>
                         </div>
 
@@ -48,7 +60,9 @@ const page = (props: Props) => {
 
 
                                 </span>
-                                <input type="text" className="py-3.5 px-14 w-full border border-primary-200 rounded-full text-sm bg-[#FAFAFE] focus:outline-none focus:border-primary-100 focus:border-2 focus:bg-[#F1F3FF]" placeholder='Enter your email' />
+                                <input type="text" className="py-3.5 px-14 w-full border border-primary-200 rounded-full text-sm bg-[#FAFAFE] focus:outline-none focus:border-primary-100 focus:border-2 focus:bg-[#F1F3FF]" placeholder='Enter your email' {...register('password')} />
+                                {errors.password && <p className='text-red-500 text-xs pl-4 pt-1.5'>{errors.password.message}</p>}
+
 
                             </div>
 
@@ -71,4 +85,4 @@ const page = (props: Props) => {
     )
 }
 
-export default page
+export default Page

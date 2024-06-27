@@ -45,15 +45,14 @@ function page({ }: Props) {
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                                     </svg>
-
                                 </span>
-                                <h4 className='font-semibold'>Join as a Host</h4>
+                                <h4 className='font-semibold'>Join as as onile (Landlord) </h4>
                             </div>
 
                             <p className='text-sm text-gray-600'>As a Auction Seller, you can list spaces and earn on Auction. You can switch this account to access member benefits..</p>
 
                             <div className="mt-6">
-                                <button className="py-3 px-6 border-2 border-primary-100 text-sm text-primary-100 rounded-3xl">Continue as a seller</button>
+                                <button className="py-3 px-6 border-2 border-primary-100 text-sm text-primary-100 rounded-3xl">Continue as landlord</button>
                             </div>
                         </div>
 

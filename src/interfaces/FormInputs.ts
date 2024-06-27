@@ -4,7 +4,6 @@ export interface signupI {
     email: string;
     password: string;
     confirmPassword: string;
-    terms: boolean;
 }   
 
 
