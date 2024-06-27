@@ -4,8 +4,10 @@ import RoundedButton from '@/components/reusables/RoundedButton';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 type Props = {}
@@ -13,13 +15,21 @@ type FormData = z.infer<typeof loginSchema>;
 
 const Page = (props: Props) => {
 
+    const router = useRouter()
+
     const {register, handleSubmit, formState: { errors } } = useForm<FormData>({
         resolver: zodResolver(loginSchema),
+        mode: "onChange",
+		reValidateMode: "onChange",
     })
 
     console.log(errors)
     const onSubmit = (data: any) => {
         console.log(data)
+        toast.success("Login successful")
+        setTimeout(() => {
+            router.push("/")
+        }, 2000)
     }
     return (
         <div className='container mx-auto'>
