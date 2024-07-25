@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "sonner";
 
-const inter = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: "Auction | Property Market Place",
@@ -16,11 +19,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <NextTopLoader />
-        <Toaster position="top-center" expand={false} richColors />
+        <Toaster closeButton position="top-right" expand={true} richColors />
         {children}
         </body>
     </html>

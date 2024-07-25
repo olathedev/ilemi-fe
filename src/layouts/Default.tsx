@@ -11,7 +11,7 @@ function Default({children}: Props) {
     <>
         <Navbar />
 
-        <main className={`relative`}>
+        <main className={`relative h-screen min-h-screen`}>
             {children}
         </main>
 

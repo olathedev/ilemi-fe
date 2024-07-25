@@ -8,14 +8,13 @@ type Props = {
 
 const RoundedButton = ({ children, variant }: Props) => {
     return (
-        <button className={`w-full px-8 py-3 rounded-3xl cursor-pointer text-sm ${variant === 'primary'
-                ? 'bg-primary-100 text-white ' : 'bg-white text-primary-100'
-
+        <span className={`w-full px-8 py-3 rounded-3xl cursor-pointer text-sm ${variant === 'primary'
+                ? 'bg-primary text-white ' : 'bg-white text-primary-100'
             }`}>
 
             {children}
 
-        </button>
+        </span>
 
     )
 }

@@ -1,5 +1,5 @@
 'use client'
-import { loginSchema } from '@/app/lib/validators/zodValidations';
+import { loginSchema } from '@/lib/utils/validators/zodValidations';
 import RoundedButton from '@/components/reusables/RoundedButton';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Metadata } from 'next';
@@ -26,7 +26,7 @@ const Page = (props: Props) => {
     console.log(errors)
     const onSubmit = (data: any) => {
         console.log(data)
-        toast.success("Login successful")
+        toast.success("Login successful")   
         setTimeout(() => {
             router.push("/")
         }, 2000)
