@@ -9,7 +9,7 @@ const api: AxiosInstance = axios.create({
 interface ApiError {
     message: string;
     status: string | number;
-    error?: unknown;
+    error?: any;
   }
 
 export const callApi = async (endpoint: string, method: 'POST' | 'GET' = 'GET', data?: Record<string, unknown> | FormData) => {

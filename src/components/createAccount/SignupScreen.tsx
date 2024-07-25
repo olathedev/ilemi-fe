@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import AppCheckbox from '../common/AppCheckbox'
 import { Button } from '../ui/button'
-import { Link } from 'lucide-react'
 import GoogleIcon from '../common/icons/GoogleIcon'
 import { ISignup } from '@/interfaces/FormInputs'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signupSchema } from '@/lib/utils/validators/zodValidations'
-
+import Link from 'next/link'
 
 type Props = {
     onSubmit: (data: ISignup) => void,
@@ -27,7 +26,7 @@ const SignupScreen = ({ onSubmit, isLoading }: Props) => {
     console.log(errors)
 
     return (
-        <div className="mt-4 border p-5 rounded-md">
+        <div className="mt-4 md:border md:p-5 rounded-md">
             <h1 className="text-lg font-semibold text-slate-600 ">Welcome to Ilemi, <span className=''>Onile(Landlord)</span></h1>
             <p className='text-base text-gray-500'>Lets sign you up in a few easy steps</p>
 
@@ -82,8 +81,8 @@ const SignupScreen = ({ onSubmit, isLoading }: Props) => {
                 </Button>
             </form>
 
-            <div className='text-center mt-5 cursor-pointer'>
-                Already have an account? <span className="text-primary font-semibold">Login</span>
+            <div className='text-center mt-5 cursor-pointer flex'>
+                Already have an account? <Link href="/login" className="text-primary font-semibold">Login</Link>
             </div>
 
         </div>

@@ -9,88 +9,84 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
+import { Button } from '@/components/ui/button';
+import GoogleIcon from '@/components/common/icons/GoogleIcon';
+import { useFetch } from '@/hooks/useFetch';
+import { login } from '@/interfaces/FormInputs';
 
 type Props = {}
 type FormData = z.infer<typeof loginSchema>;
 
 const Page = (props: Props) => {
-
     const router = useRouter()
+    const {fetch, isLoading} = useFetch()
 
-    const {register, handleSubmit, formState: { errors } } = useForm<FormData>({
+    const {register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
         resolver: zodResolver(loginSchema),
         mode: "onChange",
 		reValidateMode: "onChange",
     })
 
-    console.log(errors)
+    // console.log(errors)
     const onSubmit = (data: any) => {
         console.log(data)
-        toast.success("Login successful")   
-        setTimeout(() => {
-            router.push("/")
-        }, 2000)
+        const body: login = {
+            email: data.email,
+            password: data.password
+        }
+        const response = fetch('/auth/login', 'POST', body)  
+        if(!response) {
+            reset()
+            return
+        }
+
+        
     }
     return (
-        <div className='container mx-auto'>
-            <div className="lg:-mt-14 mt-20 h-screen max-h-screen w-full md:flex flex-col items-center justify-center">
-                <div className='md:border border-[#B1B7D6] md:px-10 py-6 md:w-[30rem] w-full mt-4 rounded-xl'>
-                    <h2 className='text-xl font-semibold text-center'>Welcome Back</h2>
-                    <p className='my-2 text-center text-[15px] text-slate-700'>Sign into your Account account to continue</p>
-                    <div className="border-t my-6"></div>
+        <div className="mt-4 md:border border-gray-300 md:p-5 rounded-md">
+            <h1 className="text-lg font-semibold text-slate-800 ">Welcome back, <span className=''>Onile(Landlord)</span></h1>
+            <p className='text-base text-gray-600'>Sign in to catch up with your activities</p>
 
-                    <form className='py-4' onSubmit={handleSubmit(onSubmit)}>
+            <form action="" className='w-full flex flex-col gap-2 mt-3' onSubmit={handleSubmit(onSubmit)}>
+                <div className="py-2.5 px-3 border border-gray-300 rounded-xl flex items-center gap-3 justify-center text-gray-500 ">
+                    <GoogleIcon />
+                    Continue with google
+                </div>
 
-                        <div className='flex flex-col gap-1.5 mb-6'>
-                            <label className="text-xs pl-4 font-semibold">EMAIL ADRESS</label>
+                <div className="flex items-center my-2">
+                    <div className="flex-grow border-t border-gray-300"></div>
+                    <span className="flex-shrink mx-4 text-gray-600">OR</span>
+                    <div className="flex-grow border-t border-gray-300"></div>
+                </div>
+               
+                <div className="w-full">
+                <input type="text" className='w-full text-[15px] text-gray-600 py-3 px-3 border border-gray-300 rounded-lg' placeholder='Email Adress' {...register('email')} />
+                {errors.email && <p className="text-xs px-1 text-red-500">{errors.email.message}</p>}
+                
+                </div>
 
-                            <div className='relative w-full'>
-
-                                <span className='absolute top-3.5 left-6'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                                    </svg>
-
-                                </span>
-                                <input type="text" className="py-3.5 px-14 w-full border border-primary-200 rounded-full text-sm bg-[#FAFAFE] focus:outline-none focus:border-primary-100 focus:border-2 focus:bg-[#F1F3FF]" placeholder='Enter your email' {...register('email')} />
-
-                                {errors.email && <p className='text-red-500 text-xs pl-4 pt-1.5'>{errors.email.message}</p>}
-                            </div>
-                        </div>
-
-                        <div className='flex flex-col gap-1.5'>
-                            <label className="text-xs pl-4 font-semibold">PASSWORD</label>
-
-                            <div className='relative w-full'>
-
-                                <span className='absolute top-3 left-6'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                                    </svg>
-
-
-                                </span>
-                                <input type="text" className="py-3.5 px-14 w-full border border-primary-200 rounded-full text-sm bg-[#FAFAFE] focus:outline-none focus:border-primary-100 focus:border-2 focus:bg-[#F1F3FF]" placeholder='Enter your email' {...register('password')} />
-                                {errors.password && <p className='text-red-500 text-xs pl-4 pt-1.5'>{errors.password.message}</p>}
-
-
-                            </div>
-
-                            <div className="text-right text-sm font-semibold text-gray-600">Forgoten Password?</div>
-
-                            <div className="w-full my-3">
-                                <RoundedButton variant='primary'>Sign in</RoundedButton>
-                            </div>
-                        </div>
-
-                    </form>
+                <div className="w-full relative">
+                    <input type="password" className='w-full text-[15px] text-gray-600 py-3 px-2 border border-gray-300 rounded-lg' placeholder='Password' {...register('password')} />
+                    <span className="absolute right-6 top-3 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 text-gray-600">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+                        </svg>
+                    </span>
+                {errors.password && <p className="text-xs px-1 text-red-500">{errors.password.message}</p>}
 
                 </div>
 
-                <p className='text-sm text-center'>Dont have an account? <Link href="/signup" className='text-primary-100'>Create Account</Link></p>
+                
 
+                <Button size='xl' className='py-4' disabled={isLoading}>
+                     {isLoading ? 'loading...' : 'Continue'}
+                </Button>
+            </form>
 
+            <div className='text-center mt-5 cursor-pointer'>
+                Already have an account? <span className="text-primary font-semibold">Login</span>
             </div>
+
         </div>
     )
 }

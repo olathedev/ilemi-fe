@@ -12,8 +12,25 @@ export const metadata: Metadata = {
 
 function page({ }: Props) {
     return (
-        <div className=''>
-          
+        <div className='container mx-auto md:px-10 px-6 h-screen'>
+        <div className="md:py-8 py-6">
+                <Link href="/">
+                    <div className='w-1/2 flex items-center gap-2'>
+
+                        <Image
+                            src="/images/logo.svg"
+                            width={30}
+                            height={30}
+                            alt="Picture of the author"
+                        />
+
+                        <h3 className='text-xl text-primary-100'>Auction.<span className='text-lg'>ng</span></h3>
+                    </div>
+                </Link>
+
+            </div>
+
+            <div className='h-full mt-20'>
 
             <div className="lg:-mt-24 mt-12 px-3 md:h-screen md:max-h-screen w-full md:flex flex-col items-center justify-center">
                 <h2 className='text-xl font-semibold text-slate-800'>How would you like to Join <span className='text-primary-200'>Ilemi?</span></h2>
@@ -65,6 +82,8 @@ function page({ }: Props) {
                 <p className='text-sm'>Have an account? <Link href="/login" className='text-primary-100'>Sign In</Link></p>
             </div>
         </div>
+        </div>
+        
     )
 }
 

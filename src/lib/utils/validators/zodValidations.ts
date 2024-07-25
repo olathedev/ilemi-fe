@@ -7,7 +7,7 @@ export const loginSchema: ZodType<login> = z.object({
             return value.toLowerCase().trim();
         }),
 
-    password: z.string().min(8, { message: "invalid password input" }).max(50)
+    password: z.string().min(6, { message: "invalid password input" }).max(50)
         .transform((value) => {
             return value.trim();
         }),

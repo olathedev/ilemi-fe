@@ -24,7 +24,9 @@ const Page = (props: Props) => {
             email: data.email,
             password: data.password
         }
-        await fetch('/auth/register', 'POST', body)
+        const response = await fetch('/auth/register', 'POST', body)
+        console.log(response)
+        if (!response) return
         router.push(`/verify-email?email=${data.email}`)
     }
 
@@ -32,12 +34,9 @@ const Page = (props: Props) => {
         router.prefetch('/verify-email')
     }, [router])
     return (
-        <div className='w-full h-screen flex items-center justify-center p-4'>
-            <div className='w-full md:w-[35%]'>
-                <AppBack />
-                <SignupScreen onSubmit={onSignup} isLoading={isLoading} />
-            </div>
-        </div>
+        <>
+            <SignupScreen onSubmit={onSignup} isLoading={isLoading} />
+        </>
     )
 }
 
