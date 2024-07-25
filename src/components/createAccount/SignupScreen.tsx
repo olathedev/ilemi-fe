@@ -10,10 +10,11 @@ import { signupSchema } from '@/lib/utils/validators/zodValidations'
 
 
 type Props = {
-    onSubmit: (data: ISignup) => void
+    onSubmit: (data: ISignup) => void,
+    isLoading: boolean
 }
 
-const SignupScreen = ({ onSubmit }: Props) => {
+const SignupScreen = ({ onSubmit, isLoading }: Props) => {
     const { register, handleSubmit, formState: {errors} } = useForm<ISignup>({
         resolver: zodResolver(signupSchema)
     })
@@ -76,8 +77,8 @@ const SignupScreen = ({ onSubmit }: Props) => {
                     <p>I acknowledge that I have read and do hereby accept the terms and conditions in the <span className="text-primary font-semibold">Ilemi Terms of Use</span>, and <span className="text-primary font-semibold">Privacy policy</span>.</p>
                 </div>
 
-                <Button size='xl' className='py-4'>
-                    Continue
+                <Button size='xl' className='py-4' disabled={isLoading}>
+                     {isLoading ? 'loading...' : 'Continue'}
                 </Button>
             </form>
 

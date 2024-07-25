@@ -12,7 +12,7 @@ interface ApiError {
     error?: unknown;
   }
 
-export const callApi = async (endpoint: `/${string}`, method: 'POST' | 'GET' = 'GET', data?: Record<string, unknown> | FormData) => {
+export const callApi = async (endpoint: string, method: 'POST' | 'GET' = 'GET', data?: Record<string, unknown> | FormData) => {
     try {
         const config = {method, url: endpoint, ...(data && {data})}
         const response: AxiosResponse = await api(config)

@@ -2,22 +2,30 @@
 import AppBack from '@/components/common/AppBack'
 import OtpInput from '@/components/common/OtpInput'
 import { Button } from '@/components/ui/button'
+import { useFetch } from '@/hooks/useFetch'
+import { callApi } from '@/lib/helpers/callApi'
+import { useSearchParams } from 'next/navigation'
 import React, { KeyboardEvent, useRef, useState } from 'react'
 import { toast } from 'sonner'
 
 type Props = {}
 
 const OtpScreen = (props: Props) => {
-
+  const searchParams = useSearchParams()
+  const email = searchParams.get('email')
+  const { fetch, isLoading } = useFetch()
+  
   const [otp, setOtp] = useState<string | null>(null)
-
   const handleOtpChnage = (otp: string) => {
     setOtp(otp)
   }
 
-  const onVerify = (e: any) => {
+  const onVerify = async(e: any) => {
     e.preventDefault()
-    toast.success("Email verified, you'll be redirected to signin.")
+    await fetch('/auth/verify-otp', 'POST', {
+      email,
+      otp
+    })
   }
  
   return (
@@ -25,14 +33,17 @@ const OtpScreen = (props: Props) => {
       <div className='w-full md:w-[35%]'>
         <AppBack />
         <h1 className="mt-4 text-lg font-semibold text-slate-800 ">Verify your email address</h1>
-        <p className='text-base text-gray-500'>Enter the 6 digit code sent to joh****@example.com</p>
+        <p className='text-base text-gray-500'>Enter the 6 digit code sent to {email}</p>
 
-        <form className='w-[90%] flex flex-col mt-4 gap-4 justify-center'>
+        <form className='md:w-[90%] flex flex-col mt-4 gap-4 justify-center'>
           <OtpInput onChange={handleOtpChnage} />
-          <Button size='xl' className='py-4' onClick={onVerify}>
+          <Button size='xl' className='py-4' onClick={onVerify} disabled={isLoading}>
             Verify
           </Button>
         </form>
+
+        <p className="text-center mt-3">Didn’t receive link? <span className="text-primary font-semibold">Resend</span> </p>
+        
       </div>
     </div>
   )

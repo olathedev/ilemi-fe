@@ -6,37 +6,36 @@ import SignupScreen from '@/components/createAccount/SignupScreen';
 import { useRouter } from 'next/navigation';
 import AppBack from '@/components/common/AppBack';
 import { callApi } from '@/lib/helpers/callApi';
+import { ISignup } from '@/interfaces/FormInputs';
+import { ENDPOINTS } from '@/lib/utils/endpoints';
+import { ApiResponse } from '@/interfaces/ApiResponses';
+import { useFetch } from '@/hooks/useFetch';
 
 type Props = {}
 type signUpStep = 'form' | 'otp' | 'success'
 const Page = (props: Props) => {
+    const router = useRouter()
+    const { fetch, isLoading } = useFetch()
 
-    const fetch = async () => {
-        const response = await callApi('/health')
-        console.log(response)
-        toast.success(response.data.message)
+    const onSignup = async (data: ISignup) => {
+        const body = {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            password: data.password
+        }
+        await fetch('/auth/register', 'POST', body)
+        router.push(`/verify-email?email=${data.email}`)
     }
 
     useEffect(() => {
-        fetch()
-    }, [])
-    const router = useRouter()
-
-    const [step, setStep] = useState<signUpStep>('form')
-
-    const onSignup = (data: any) => {
-        console.log(data)
-        toast.success('Success', {
-            description: 'Signup sucessfully worked'
-        })
-        router.push('/verify-email')
-    }
-
+        router.prefetch('/verify-email')
+    }, [router])
     return (
         <div className='w-full h-screen flex items-center justify-center p-4'>
             <div className='w-full md:w-[35%]'>
                 <AppBack />
-                <SignupScreen onSubmit={onSignup} />
+                <SignupScreen onSubmit={onSignup} isLoading={isLoading} />
             </div>
         </div>
     )
