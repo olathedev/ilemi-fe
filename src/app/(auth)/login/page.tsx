@@ -13,11 +13,14 @@ import { Button } from '@/components/ui/button';
 import GoogleIcon from '@/components/common/icons/GoogleIcon';
 import { useFetch } from '@/hooks/useFetch';
 import { login } from '@/interfaces/FormInputs';
+import { useAuthSessionStore } from '@/store/sessionStore';
 
 type Props = {}
 type FormData = z.infer<typeof loginSchema>;
 
 const Page = (props: Props) => {
+    const { setSession, token } = useAuthSessionStore()
+
     const router = useRouter()
     const {fetch, isLoading} = useFetch()
 
@@ -28,17 +31,20 @@ const Page = (props: Props) => {
     })
 
     // console.log(errors)
-    const onSubmit = (data: any) => {
+    const onSubmit = async (data: any) => {
         console.log(data)
         const body: login = {
             email: data.email,
             password: data.password
         }
-        const response = fetch('/auth/login', 'POST', body)  
+        const response = await fetch('/auth/login', 'POST', body)  
         if(!response) {
             reset()
             return
         }
+        setSession({user: response?.data, accessToken: response?.accessToken})
+
+        console.log("user for store", response)
 
         
     }
