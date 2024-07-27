@@ -11,7 +11,7 @@ const monts = Inter({subsets: ['latin']})
 
 function Navbar({ }: Props) {
     return (
-        <nav className={`w-full px-20 py-7 bg-white z-20 shadow`}>
+        <nav className={`w-full md:px-20 px-4 py-7 bg-white z-20 shadow`}>
 
             <div className="w-full flex items-center justify-between">
 
@@ -30,7 +30,7 @@ function Navbar({ }: Props) {
                         <h3 className='text-xl font-semibold'>Ilemi.<span className='text-xl text-primary'>ng</span></h3>
                         </Link>
 
-                        <div className="inline-flex space-x-4">
+                        <div className="hidden md:inline-flex space-x-4">
                         <div className='flex gap-1 items-center'>
                             <p className=''>For landlords</p>
                             <span>
@@ -61,20 +61,13 @@ function Navbar({ }: Props) {
                 {/*  */}
 
                 <div className='grow flex justify-end space-x-6'>
-                    <div className='flex gap-10 items-center'>
-                        
-
-                        <div>
-
-                        </div>
-                    </div>
-
+                   
                     {/* buttons */}
                     <div className='flex gap-6 items-center'>
                         <p className='cursor-pointer'>Login</p>
                        <Link href="/signup"><RoundedButton variant='primary'>Create Account</RoundedButton></Link> 
 
-                        <div className="flex items-center gap-2">
+                        <div className="hidden md:flex items-center gap-2">
                             <Image
                                 src="/images/ng.svg"
                                 width={25}

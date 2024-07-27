@@ -14,20 +14,20 @@ const Hero = (props: Props) => {
     return (
 
         // <section className='h-[20rem]'>
-        <div className="container mx-auto px-20 h-full flex justify-center">
+        <div className="container mx-auto md:px-20 px-4 h-full flex justify-center">
 
-            <div className="w-[80%] flex flex-col items-center text-center mt-20 space-y-6">
-                <h1 className={`text-5xl font-bold leading-tight opacity-75`}>Streamline Your Property Management
+            <div className="lg:w-[80%] flex flex-col md:items-center md:text-center mt-20 space-y-6">
+                <h1 className={`text-2xl md:text-5xl font-bold leading-tight opacity-75`}>Streamline Your Property Management
                 Effortlessly Manage Tenants and Properties</h1>
 
-                <h3 className='text-xl w-[80%] text-grey-600'>Our comprehensive solution simplifies tenant oversight, rent collection, and property maintenance. Boost efficiency and reduce stress with our intuitive platform.</h3>
+                <h3 className='text-lg md:text-xl md:w-[80%] text-grey-600'>Our comprehensive solution simplifies tenant oversight, rent collection, and property maintenance. Boost efficiency and reduce stress with our intuitive platform.</h3>
                       
                     <div className="flex gap-3 mt-4">
-                        <Button size="xl" className="py-3.5 text-lg">
+                        <Button size="xl" className="py-3 md:text-lg">
                             Get Started
                         </Button>
 
-                        <Button variant="outline" size="xl" className="py-3.5 text-lg text-primary">
+                        <Button variant="outline" size="xl" className="py-3 md:text-lg text-primary">
                             Request Demo
                         </Button>
                     </div>
