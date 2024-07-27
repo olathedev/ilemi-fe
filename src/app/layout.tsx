@@ -10,8 +10,8 @@ const inter = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: "Auction | Property Market Place",
-  description: "Marketplace for home sellers and Buyers",
+  title: "Ilemi | Seamless Tenant Managemnt",
+  description: "Sofware solution for landlords to manage their tenancy",
 };
 
 export default function RootLayout({

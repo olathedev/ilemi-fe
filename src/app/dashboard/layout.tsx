@@ -1,11 +1,14 @@
 'use client'
+import DashboardSideBar from '@/components/common/DashboardSideBar'
 import { useAuth } from '@/hooks/useAuth'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 
-type Props = {}
+type Props = {
+    children: React.ReactNode
+}
 
-const Layout = (props: Props) => {
+const Layout = ({children}: Props) => {
 
     const { loading, user, logout } = useAuth()
     const router = useRouter()
@@ -26,9 +29,15 @@ const Layout = (props: Props) => {
     }
 
   return (
-    <div>
-        layout
-        <p onClick={logout}> logout </p>
+    <div className="flex relative h-screen min-h-screen">
+        <DashboardSideBar />
+        <div className="flex-1 h-full">
+            <nav className='py-7 border border-b-gray-300'>  </nav>
+            <main className="container mx-auto pt-6">
+               { children }
+            </main>
+        </div>
+
 
     </div>
   )
