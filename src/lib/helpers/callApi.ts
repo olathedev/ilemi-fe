@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import { BACKEND_URL } from "../utils/env.util";
+import { useAuthSessionStore } from "@/store/sessionStore";
 
 const api: AxiosInstance = axios.create({
     baseURL: BACKEND_URL,
@@ -10,7 +11,15 @@ interface ApiError {
     message: string;
     status: string | number;
     error?: any;
-  }
+}
+
+api.interceptors.request.use((config) => {
+    const token = useAuthSessionStore.getState().token
+    if(token) {
+        config.headers['Authorization'] = `Bearer ${token}`
+    }
+    return config
+})
 
 export const callApi = async (endpoint: string, method: 'POST' | 'GET' = 'GET', data?: Record<string, unknown> | FormData) => {
     try {

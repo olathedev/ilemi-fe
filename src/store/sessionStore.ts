@@ -9,6 +9,8 @@ interface AuthState {
     user: unknown;
     token: string | null;
     getSession: () => Promise<void>;
+    setLoading: (data: boolean) => void;
+    setUser: (data: IUser) => void;
     setSession: (data: {user: IUser, accessToken: string}) => void;
     clearSession: () => void;
 }
@@ -25,14 +27,19 @@ export const useAuthSessionStore = create<AuthState>()(persist((set, get) => ({
     getSession: async () => {
         const { data } = await callApi('/auth/user')
         set({
-            ...(data?.data && { user: data?.data}),
+            ...(data && { user: data?.user}),
             loading: false
         })
+        console.log('get session', data.user)
+        console.log(get())
+
     },
     setSession:  (data: {user: IUser, accessToken: string}) => {
         set({ user: data.user, loading: false, token: data.accessToken })
         console.log(get())
     },
+    setUser: (data: IUser) => set({ user: data}),
+    setLoading: (data: boolean) => set({ loading: data }),
     clearSession:  async () => {set({ user: null, token: null })}
 }), {
     name: 'auth-storage',
