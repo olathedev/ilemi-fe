@@ -14,14 +14,12 @@ function Layout({ children }: Props) {
     const router = useRouter()
 
     useEffect(() => {
-        if(!loading && user) {
-            setTimeout(() => {
-                router.push('/dashboard')  
-            }, 500);
+        if (!loading && user) {
+            router.push('/dashboard')
         }
     }, [loading, user, router])
 
-    if(loading) {
+    if (loading) {
         return (
             <div className='w-full h-screen flex items-center justify-center p-4'>
                 <h2>Validating Auth status... </h2>

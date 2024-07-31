@@ -6,9 +6,7 @@ type Props = {
 }
 
 const OtpInput = ({onChange}: Props) => {
-    const [otpVal, setOtpVal] = useState('')
     const [otp, setOtp] = useState<string[]>(['', '', '', '', '', ''])
-    const [loading, setLoading] = useState<boolean>(false)
     const inputRefs = useRef<(HTMLInputElement | null)[]>([])
 
     const handleChange = (index: number, value: string) => {
@@ -22,6 +20,7 @@ const OtpInput = ({onChange}: Props) => {
         }
         onChange(newOtp.join(''));
     }
+
     const handleKeyDown = (index: number, e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Backspace' && index > 0 && otp[index] === '') {
             inputRefs.current[index - 1]?.focus();
@@ -29,21 +28,21 @@ const OtpInput = ({onChange}: Props) => {
     };
 
     return (
-         <div className='w-full flex justify-between'>
+        <div className='w-full flex justify-between'>
             {otp.map((digit, index) => (
               <input
                 key={index}
                 type="text"
                 inputMode="numeric"
-                ref={(el) => (inputRefs.current[index] = el)}
+                ref={(el) => inputRefs.current[index] = el}
                 onKeyDown={(e) => handleKeyDown(index, e)}
                 maxLength={1}
                 className='h-[3rem] w-14 flex items-center justify-center text-xl text-gray-500 text-center border border-gray-400 rounded-md'
                 value={digit}
-                onChange={(e) => handleChange(index, e.target.value)} />
+                onChange={(e) => handleChange(index, e.target.value)} 
+              />
             ))}
-
-          </div>
+        </div>
     )
 }
 

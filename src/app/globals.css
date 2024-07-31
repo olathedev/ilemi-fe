@@ -92,4 +92,8 @@ html {
   input {
     @apply focus:outline-none
   }
+  
+  .hoverside {
+    @apply hover:bg-primary-200 hover:rounded-lg transition duration-300 ease-in-out
+  }
 }

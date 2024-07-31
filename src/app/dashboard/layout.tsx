@@ -1,4 +1,5 @@
 'use client'
+import DashboardNavBar from '@/components/common/DashboardNavBar'
 import DashboardSideBar from '@/components/common/DashboardSideBar'
 import { useAuth } from '@/hooks/useAuth'
 import { useRouter } from 'next/navigation'
@@ -31,8 +32,8 @@ const Layout = ({children}: Props) => {
   return (
     <div className="flex relative h-screen min-h-screen">
         <DashboardSideBar />
-        <div className="flex-1 h-full">
-            <nav className='py-7 border border-b-gray-300'>  </nav>
+        <div className="flex-1 h-full bg-gray-50">
+            <DashboardNavBar />
             <main className="container mx-auto pt-6">
                { children }
             </main>
