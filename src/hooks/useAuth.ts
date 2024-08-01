@@ -24,8 +24,8 @@ export const useAuth = () => {
     }, [user, token, setLoading, getSession, clearSession])
     
     const logout = () => {
-        clearSession()
         router.push('/')
+        clearSession()
     }
 
     return { 

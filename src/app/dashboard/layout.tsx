@@ -32,8 +32,8 @@ const Layout = ({children}: Props) => {
   return (
     <div className="flex relative h-screen min-h-screen">
         <DashboardSideBar />
-        <div className="flex-1 h-full bg-gray-50">
-            <DashboardNavBar />
+        <div className="flex-1 h-full max-h-full overflow-y-auto bg-gray-50">
+            <DashboardNavBar logout={logout} user={`${user && (user.firstname + ' '  + user.lastname)}`} />
             <main className="container mx-auto pt-6">
                { children }
             </main>

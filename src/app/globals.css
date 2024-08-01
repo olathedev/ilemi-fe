@@ -94,6 +94,10 @@ html {
   }
   
   .hoverside {
-    @apply hover:bg-primary-200 hover:rounded-lg transition duration-300 ease-in-out
+    @apply cursor-pointer hover:bg-primary-200 hover:rounded-lg transition duration-300 ease-in-out
+  }
+
+  th {
+    @apply font-semibold text-gray-600
   }
 }

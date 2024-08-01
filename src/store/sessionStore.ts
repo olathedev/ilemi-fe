@@ -6,7 +6,7 @@ import { persist } from "zustand/middleware";
 interface AuthState {
     isFirstMount: boolean;
     loading: boolean;
-    user: unknown;
+    user: any;
     token: string | null;
     getSession: () => Promise<void>;
     setLoading: (data: boolean) => void;

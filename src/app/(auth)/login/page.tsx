@@ -14,7 +14,7 @@ import GoogleIcon from '@/components/common/icons/GoogleIcon';
 import { useFetch } from '@/hooks/useFetch';
 import { login } from '@/interfaces/FormInputs';
 import { useAuthSessionStore } from '@/store/sessionStore';
-import EyeIcon from '@/components/common/icons/eyeIcon';
+import EyeIcon from '@/components/common/icons/EyeIcon';
 
 type Props = {}
 type FormData = z.infer<typeof loginSchema>;
@@ -89,7 +89,7 @@ const Page = (props: Props) => {
             </form>
 
             <div className='text-center mt-5 cursor-pointer'>
-                Already have an account? <span className="text-primary font-semibold">Login</span>
+                Dont have an account? <Link href={'/signup'} className="text-primary font-semibold">Signup</Link>
             </div>
 
         </div>

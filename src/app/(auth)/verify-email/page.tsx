@@ -36,9 +36,11 @@ const OtpScreen = (props: Props) => {
       <h1 className="mt-4 text-lg font-semibold text-slate-800 ">Verify your email address</h1>
       <p className='text-base text-gray-500'>Enter the 6 digit code sent to {email}</p>
 
-      <form className='lg:w-[90%] flex flex-col mt-4 gap-4 justify-center'>
+      <form className='w-full flex flex-col mt-4 gap-4 justify-center'>
+        <div>
         <OtpInput onChange={handleOtpChnage} />
-        <Button size='xl' className='py-4' onClick={onVerify} disabled={isLoading}>
+        </div>
+        <Button size='xl' className='py-4 w-full' onClick={onVerify} disabled={isLoading}>
           Verify
         </Button>
       </form>

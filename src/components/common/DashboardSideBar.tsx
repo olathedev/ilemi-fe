@@ -31,7 +31,7 @@ const DashboardSideBar = (props: Props) => {
     ]
 
     return (
-        <aside className="hidden lg:block w-66 h-full static top-0 left-0 overflow-y-auto bg-white border transform-x-0 transition-transform duration-300 ease-in-out">
+        <aside className="hidden lg:block w-66 h-full max-h-full overflow-y-auto bg-white border transform-x-0 transition-transform duration-300 ease-in-out">
             <div className="px-6 py-4">
                 <h3 className=" text-2xl font-semibold opacity-90">ilemi<span className='text-primary'>.ng</span> </h3>
 
