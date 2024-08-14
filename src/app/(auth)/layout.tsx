@@ -29,7 +29,7 @@ function Layout({ children }: Props) {
 
     return (
         <div className='w-full h-screen flex items-center justify-center p-4'>
-            <div className='w-full md:w-[35%]'>
+            <div className='w-full lg:w-[35%] md:w-1/2'>
                 {/* <AppBack /> */}
                 {children}
             </div>

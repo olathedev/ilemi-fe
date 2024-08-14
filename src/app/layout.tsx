@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Inter, Outfit} from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "sonner";
+import TanstackQueryClientProvider from "@/providers/TanstackQueryClientProvider";
 
-const inter = Outfit({
+
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-sans",
 })
+
 
 export const metadata: Metadata = {
   title: "Ilemi | Seamless Tenant Managemnt",
@@ -19,14 +21,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <NextTopLoader />
-        <Toaster closeButton position="top-right" expand={true} richColors />
-        {children}
-        </body>
+      <body className={`font-outfit`}>
+        <TanstackQueryClientProvider>
+          <NextTopLoader />
+          <Toaster closeButton position="top-center" expand={true} richColors />
+          {children}
+        </TanstackQueryClientProvider>
+      </body>
     </html>
   );
 }

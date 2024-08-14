@@ -40,7 +40,9 @@ export const useAuthSessionStore = create<AuthState>()(persist((set, get) => ({
     },
     setUser: (data: IUser) => set({ user: data}),
     setLoading: (data: boolean) => set({ loading: data }),
-    clearSession:  async () => {set({ user: null, token: null })}
+    clearSession:  () => {
+        set({ user: null, token: null })
+    }
 }), {
     name: 'auth-storage',
     storage: {

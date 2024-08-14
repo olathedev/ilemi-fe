@@ -78,6 +78,9 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      fontFamily: {
+        outfit: ["Outfit"]
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -98,6 +101,8 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+
+
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config

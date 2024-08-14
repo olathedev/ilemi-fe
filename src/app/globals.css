@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -99,5 +101,12 @@ html {
 
   th {
     @apply font-semibold text-gray-600
+  }
+
+  .trans-rent {
+    @apply py-1 px-5 text-center rounded-xl text-xs bg-primary-400 text-primary-800 bg-opacity-30
+  }
+  .trans-maintance {
+    @apply py-1 px-5 text-center rounded-xl text-xs bg-yellow-300 text-yellow-800 bg-opacity-30
   }
 }

@@ -2,6 +2,7 @@
 import ElipsisIcon from '@/components/common/icons/ElipsisIcon'
 import EyeIcon from '@/components/common/icons/EyeIcon'
 import StatsCard from '@/components/dashboard/StatsCard'
+import { transactionMocks } from '@/data/mock.data'
 import { useAuthSessionStore } from '@/store/sessionStore'
 import React, { useState } from 'react'
 
@@ -16,7 +17,7 @@ function Page({ }: Props) {
             <h1 className="text-xl font-semibold">Good morning, {`${user && user.firstname}👋`}</h1>
             <p className="text-grey-600">Welcome to your ilemi Dashboard</p>
 
-            <StatsCard balanceHidden={balanceHidden} setBalanceHidden={setBalanceHidden} />
+            <StatsCard balanceHidden={balanceHidden} setBalanceHidden={setBalanceHidden} transactions={transactionMocks} />
 
             <div className="mt-4 w-full bg-white rounded-md px-6 py-6">
                 <div className='mb-6'>

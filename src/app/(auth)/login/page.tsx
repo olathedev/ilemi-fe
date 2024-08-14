@@ -46,11 +46,9 @@ const Page = (props: Props) => {
         setSession({user: response?.data, accessToken: response?.accessToken})
 
         console.log("user for store", response)
-
-        
     }
     return (
-        <div className="mt-4 md:border border-gray-300 md:p-5 rounded-md">
+        <div className="md:border border-gray-300 md:p-5 rounded-md">
             <h1 className="text-lg font-semibold text-slate-800 ">Welcome back, <span className=''>Onile(Landlord)</span></h1>
             <p className='text-base text-gray-600'>Sign in to catch up with your activities</p>
 

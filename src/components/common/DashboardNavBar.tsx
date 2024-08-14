@@ -9,7 +9,7 @@ type Props = {
 }
 
 const DashboardNavBar = ({ user, logout }: Props) => {
-    const [isOpen, setOpen] = useState(true)
+    const [isOpen, setOpen] = useState(false)
 
     const dropdownRef = useRef<HTMLDivElement>(null);
   
