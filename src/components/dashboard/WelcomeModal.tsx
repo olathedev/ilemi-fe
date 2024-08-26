@@ -1,17 +1,19 @@
+'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import welcomeImg from "@/assets/leadsimg.png"
 import { X } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useAuth } from '@/hooks/useAuth'
 type Props = {
-    user: any,
-    modalOpen: boolean;
-    closeWelcomeModal: () => void;
+
 }
 
-const WelcomeModal = ({ user, closeWelcomeModal, modalOpen }: Props) => {
+const WelcomeModal = ({ }: Props) => {
+    const { user } = useAuth()
+    const [modalOpen, setModalOpen] = useState(true)
+    useEffect(() => {}, [])
     return (
-        
         <>
             <motion.div
                 initial={{ opacity: 0 }}
@@ -40,7 +42,7 @@ const WelcomeModal = ({ user, closeWelcomeModal, modalOpen }: Props) => {
 
                         <div className="flex-1 flex-col p-5 text-gray-800">
                             <div className="flex justify-end">
-                                <span className='bg-gray-300 py-3 px-3 rounded-full cursor-pointer' onClick={closeWelcomeModal}>
+                                <span className='bg-gray-300 py-3 px-3 rounded-full cursor-pointer' onClick={() => setModalOpen(false)}>
                                     <X size={17} />
                                 </span>
                             </div>

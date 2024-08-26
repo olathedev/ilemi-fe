@@ -17,7 +17,7 @@ function Layout({ children }: Props) {
         if (!loading && user) {
             router.push('/dashboard')
         }
-    }, [loading, user, router])
+    }, [user])
 
     if (loading) {
         return (

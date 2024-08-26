@@ -2,18 +2,22 @@ import { ISendTenantInvite, ITenantAcceptInvite } from "@/interfaces/tenant.inte
 import tenantService from "@/services/tenant.service"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
-import { use } from "react"
 import { toast } from "sonner"
 
 
 export const useGetAllTenatsQuery = () => {
-    const query = useQuery({ queryKey: ['tenants'], queryFn: tenantService.GETALLTENANTS })
+    const query = useQuery({ queryKey: ['tenants'], queryFn: tenantService.GETALLTENANTS,
+        // refetchInterval: 20000, // Refetch every 5 seconds
+        // staleTime: 0, // Consider data stale immediately
+     })
     console.log(query)
     return query
 }
 
 export const useGetAllInvitesQuery = () => {
-    const query = useQuery({ queryKey: ['invites'], queryFn: tenantService.GETINVITES })
+    const query = useQuery({
+        queryKey: ['invites'], queryFn: tenantService.GETINVITES,
+    })
     return query
 }
 
@@ -28,7 +32,7 @@ export const useSendTenantInviteMutation = () => {
                 toast.error(res.error.message)
                 return
             }
-            queryClient.invalidateQueries({queryKey: ['invites']})
+            queryClient.invalidateQueries({ queryKey: ['invites'] })
             toast.success('Invite sent to tenants mail')
         },
         onError: (err) => {

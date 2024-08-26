@@ -25,6 +25,7 @@ const intialState = {
 export const useAuthSessionStore = create<AuthState>()(persist((set, get) => ({
     ...intialState,
     getSession: async () => {
+        set({loading: true})
         const { data } = await callApi('/auth/user')
         set({
             ...(data && { user: data?.user}),

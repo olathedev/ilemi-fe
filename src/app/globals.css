@@ -91,7 +91,7 @@ html {
     @apply bg-background text-foreground;
   }
 
-  input {
+  input, textarea, select {
     @apply focus:outline-none
   }
   

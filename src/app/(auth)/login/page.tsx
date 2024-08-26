@@ -43,8 +43,8 @@ const Page = (props: Props) => {
             reset()
             return
         }
-        setSession({user: response?.data, accessToken: response?.accessToken})
-
+        router.push('/dashboard')
+        setSession({user: response?.user, accessToken: response?.accessToken})
         console.log("user for store", response)
     }
     return (

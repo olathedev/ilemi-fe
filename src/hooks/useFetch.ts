@@ -19,8 +19,9 @@ export const useFetch = () => {
 
            
             if(error.error?.status === "ACCOUNT_NOT_VERIFIED") {
-                console.log("account no dey verified")
                 router.push(`/verify-email?email=${data?.email}`)
+                console.log("account no dey verified")
+                return
             }
 
             toast.error("ERROR", {

@@ -12,21 +12,21 @@ const DashboardNavBar = ({ user, logout }: Props) => {
     const [isOpen, setOpen] = useState(false)
 
     const dropdownRef = useRef<HTMLDivElement>(null);
-  
+
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+            setOpen(false);
+        }
     };
-  
+
     useEffect(() => {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
     }, []);
     return (
-        <nav className='sticky top-0 py-5 px-8 bg-white flex  items-center justify-between shadow-sm'>
+        <nav className='sticky top-0 py-5 px-8 bg-white flex  items-center justify-between'>
             <div className=''>
                 <h3 className='font-semibold'>Onile's Dashboard</h3>
             </div>

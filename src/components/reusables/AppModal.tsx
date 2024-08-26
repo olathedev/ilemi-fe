@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-
 type Props = {
     children: React.ReactNode;
     className?: string;
@@ -16,13 +15,13 @@ const AppModal = ({ children, className, isOpen, setIsOpen }: Props) => {
                 // initial={{ opacity: 0 }}
                 // animate={{ opacity: 1 }}
                 // exit={{ opacity: 0 }}
-                className={`fixed inset-0 bg-black bg-opacity-50 flex px-4 w-full items-center justify-center z-30`}
+                className={`fixed inset-0 bg-black bg-opacity-50 flex px-4 w-full items-center justify-center z-30 h-screen max-h-screen`}
             >
                 <div
                     // initial={{ scale: 0.8, opacity: 0 }}
                     // animate={{ scale: 1, opacity: 1 }}
                     // exit={{ scale: 0.8, opacity: 0 }}
-                    className={`${className} relative rounded-2xl shadow-xl`}
+                    className={`${className} relative rounded-2xl shadow-xl h-auto max-h-[95%] overflow-auto`}
                 >
                     <span className='absolute top-4 right-4 cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
